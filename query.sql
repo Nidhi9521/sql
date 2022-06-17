@@ -104,14 +104,74 @@ update job set min_salary=min_salary+2000, max_salary=max_salary+2000 WHERE jId=
 update emp set salary=salary+(salary*0.2), comission_pct=comission_pct+(comission_pct*0.2) where jId="PU_CLERK"
 
 
--- Basic Select Queries: Get all employee details from the Employee table Get FirstName, LastName from Employees table Get FirstName from Employees table using alias name “Employee Name” Get employee details from Employees table whose Employee Name is “Steven” Get employee details from Employees table whose Employee Name are “Neena” and “Lex” Get employee details from Employees table whose Employee name are not “Neena” and “Neena” Get employee details from Employees table whose Salary between 5000 and 8000 Write a query to get the names (FirstName, LastName), Salary, PF of all the Employees (PF is calculated as 12% of salary). Get employee details from Employees table whose FirstName starts with ‘N’ Write a query to get unique department ID from Employees table Write a query to get all employee details from the employee table order by FirstName, descending. Write a query to get the EmployeeID, names (FirstName, LastName), salary in ascending order of salary. Select TOP 2 salary from employee table
+
+/* Basic Select Queries: */
+
+/*Get all employee details from the Employee table*/
+
+SELECT * from emp
+
+/*Get FirstName, LastName from Employees table */
+
+SELECT fName,lName FROM emp 
+
+
+/*Get FirstName from Employees table using alias name “Employee Name” */
+
+SELECT fName as "Employee Name" FROM emp 
+
+
+/*Get employee details from Employees table whose Employee Name is “Steven” */
+
+SELECT * FROM emp WHERE fName="Steven"
+
+
+/* Get employee details from Employees table whose Employee Name are “Neena” and “Lex” */
+
+SELECT * FROM emp WHERE fName="Neena" or fName="Lex"
+
+
+/* Get employee details from Employees table whose Employee name are not “Neena” and “Neena” */
+
+SELECT * FROM emp WHERE fName is Not "Neena"
+SELECT * FROM emp WHERE NOT fName = "Neena"
+
+
+/* Get employee details from Employees table whose Salary between 5000 and 8000*/
+
+SELECT * FROM emp WHERE salary BETWEEN 5000 and 8000
+
+
+/* Write a query to get the names (FirstName, LastName), Salary, PF of all the Employees (PF is calculated as 12% of salary). */
+
+select fName||" "||lName  as "name", (salary+(salary*0.12)) as "pf_salary" from emp
+
+
+/*Get employee details from Employees table whose FirstName starts with ‘N’*/
+
+select * from emp where fName like "N%"
+
+
+/* Write a query to get unique department ID from Employees table*/
+
+SELECT DISTINCT dId FROM emp;
+
+
+/* Write a query to get all employee details from the employee table order by FirstName, descending.*/
+
+SELECT * FROM emp ORDER by fName DESC;
 
 
 
+/* Write a query to get the EmployeeID, names (FirstName, LastName), salary in ascending order of salary. */
+
+SELECT empId, fName||" "||lName as names,salary FROM emp ORDER by salary ASC;
 
 
 
+/*Select TOP 2 salary from employee table*/
 
+SELECT * FROM emp ORDER by salary DESC LIMIT 2
 
 
 
