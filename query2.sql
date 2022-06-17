@@ -45,7 +45,19 @@ SELECT fName,hiringDate FROM emp where hiringDate BETWEEN '1987-06-01' and '1987
 
 -- Write a query to display the current date in the following format. Sample output : 12:00 AM Sep 5, 2014
 SELECT strftime('%H : %M %m/%d/%Y','now') 
-
+SELECT 
+    CASE WHEN 
+        StrFTime('%H', 'now') % 12 = 0 THEN 12
+        ELSE StrFTime('%H', 'now') % 12 END 
+    || ':' ||
+        StrFTime('%M', 'now')
+    || ' ' ||
+    CASE WHEN
+        StrFTime('%H', 'now') > 12 THEN 'PM'
+        ELSE 'AM' END   
+		||' '||strftime('%m-%d-%Y','now')
+    `currentTime`
+ 
 -- Write a query to get the FirstName, LastName who joined in the month of June.
 SELECT fName,lName from emp WHERE  strftime('%m',hiringDate) =strftime('%m','2022-06-01');
 
