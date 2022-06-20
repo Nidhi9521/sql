@@ -41,8 +41,18 @@ SELECT EmployeeId,JobHistory.Job_Id,job_title,
 	WHERE JobHistory.Job_Id=1
 	
 
-    
-
 -- Write a View to display the department name, manager name, and city. 
+CREATE VIEW empMan as
+SELECT e.depName,e.fName,e.city,m.fName
+FROM employees e INNER join employees m on e.eId=m.mId
 
--- Create a View to display department name, name (first_name, last_name), hire date, salary of the manager for all managers whose experience is more than 15 years.
+SELECT * FROM empMan
+
+-- Create a View to display department name, name (first_name, last_name), hire date, salary of 
+-- the manager for all managers whose experience is more than 15 years.
+CREATE VIEW manExp as
+SELECT e.depName,e.fName||" "||e.lName,e.joindate,e.salary,(julianday('now')-julianday(e.joindate))/365 as exp
+FROM employees e INNER join employees m on e.eId=m.mId
+WHERE (julianday('now')-julianday(e.joindate))/365>15
+
+SELECT * FROM manExp
