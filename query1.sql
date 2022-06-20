@@ -70,23 +70,21 @@ CREATE TABLE "emp" (
 	"eId"	INTEGER,
 	"eName"	TEXT NOT NULL,
 	"hireDate"	date,
-	"commission"	BLOB,
+	"commission"	NUMERIC,
 	PRIMARY KEY("eId" AUTOINCREMENT)
 )
-
 CREATE TABLE "inventory" (
 	"iId"	INTEGER,
 	"Name"	TEXT NOT NULL,
-	"price"	REAL NOT NULL,
+	"price"	NUMERIC NOT NULL,
 	PRIMARY KEY("iId" AUTOINCREMENT)
 )
-
 CREATE TABLE "sales" (
 	"sID"	INTEGER,
 	"empId"	INTEGER,
 	"iId"	INTEGER,
-	"salePrice"	REAL,
+	"salePrice"	NUMERIC,
 	PRIMARY KEY("sID" AUTOINCREMENT),
-	FOREIGN KEY("iId") REFERENCES "inventory"("iId"),
-	FOREIGN KEY("empId") REFERENCES "emp"("eId")
+	FOREIGN KEY("empId") REFERENCES "emp"("eId"),
+	FOREIGN KEY("iId") REFERENCES "inventory"("iId")
 )
