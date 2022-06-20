@@ -66,3 +66,27 @@ on DELETE CASCADE
 
 
 -- You have been hired to create a relational database to support a car sales business. You need to store information on the business’s employees, inventory, and completed sales. You also need to account for the fact that each salesperson receives a different percentage of their sales in commission. What tables and columns would you create in your relational database, and how would you link the tables?
+CREATE TABLE "emp" (
+	"eId"	INTEGER,
+	"eName"	TEXT NOT NULL,
+	"hireDate"	date,
+	"commission"	BLOB,
+	PRIMARY KEY("eId" AUTOINCREMENT)
+)
+
+CREATE TABLE "inventory" (
+	"iId"	INTEGER,
+	"Name"	TEXT NOT NULL,
+	"price"	REAL NOT NULL,
+	PRIMARY KEY("iId" AUTOINCREMENT)
+)
+
+CREATE TABLE "sales" (
+	"sID"	INTEGER,
+	"empId"	INTEGER,
+	"iId"	INTEGER,
+	"salePrice"	REAL,
+	PRIMARY KEY("sID" AUTOINCREMENT),
+	FOREIGN KEY("iId") REFERENCES "inventory"("iId"),
+	FOREIGN KEY("empId") REFERENCES "emp"("eId")
+)
