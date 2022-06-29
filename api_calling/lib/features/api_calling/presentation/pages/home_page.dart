@@ -18,14 +18,15 @@ class HomePage extends StatelessWidget {
             if(state is serchActive){
               return Text('API Calling');
             }
-            return TextField(
+            return
+              TextField(
               controller: _name,
               decoration: InputDecoration(
                 labelText: 'Enter Author',
                 labelStyle:  TextStyle(color: Colors.white),
               ),style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
-              keyboardType: TextInputType.number,
+              // keyboardType: TextInputType.number,
             );
           },
         ),
@@ -43,8 +44,8 @@ class HomePage extends StatelessWidget {
                     print('close');
                     context.read<DataCubit>().serch(0);
                     if(_name.text.isNotEmpty) {
-                      context.read<DataCubit>().serchData(int.parse(_name
-                          .text));
+                      context.read<DataCubit>().serchData(_name
+                          .text);
                       _name.clear();
                     }
                   }, icon: Icon(Icons.arrow_right_outlined)),
@@ -62,16 +63,39 @@ class HomePage extends StatelessWidget {
           if(state is GetDataPartSucc){
             return CardView(qutoesModel: state.modelQutoes);
           }
+
           return Center(child: CircularProgressIndicator());
         },
+
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('btn press');
-          context.read<DataCubit>().getData();
-        },
-        child: Icon(Icons.add),
-      ),
+
+
+      floatingActionButton:Stack(
+        children: <Widget>[
+          Padding(padding: EdgeInsets.only(left:31),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child:FloatingActionButton(
+                onPressed: () {
+                  print('btn press');
+                  context.read<DataCubit>().getData();
+                },
+                child: Icon(Icons.add),
+              ),
+            ),),
+
+          Align(
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(
+              onPressed: (){
+                context.read<DataCubit>().randomData();
+              },
+              child: Icon(Icons.access_time_outlined),),
+          ),
+        ],
+      )
+
+
     );
   }
 }
