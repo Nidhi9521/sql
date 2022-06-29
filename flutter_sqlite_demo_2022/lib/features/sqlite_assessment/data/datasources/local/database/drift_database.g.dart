@@ -6,7 +6,7 @@ part of 'drift_database.dart';
 // MoorGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
+// ignore_for_file: type=lint
 class Employee extends DataClass implements Insertable<Employee> {
   final int? employeeId;
   final String? employeeName;
@@ -200,28 +200,33 @@ class EmployeeTableCompanion extends UpdateCompanion<Employee> {
 
 class $EmployeeTableTable extends EmployeeTable
     with TableInfo<$EmployeeTableTable, Employee> {
-  final GeneratedDatabase _db;
+  @override
+  final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $EmployeeTableTable(this._db, [this._alias]);
+  $EmployeeTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _employeeIdMeta = const VerificationMeta('employeeId');
+  @override
   late final GeneratedColumn<int?> employeeId = GeneratedColumn<int?>(
       'employee_id', aliasedName, true,
-      typeName: 'INTEGER', requiredDuringInsert: false);
+      type: const IntType(), requiredDuringInsert: false);
   final VerificationMeta _employeeNameMeta =
       const VerificationMeta('employeeName');
+  @override
   late final GeneratedColumn<String?> employeeName = GeneratedColumn<String?>(
       'employee_name', aliasedName, true,
-      typeName: 'TEXT', requiredDuringInsert: false);
+      type: const StringType(), requiredDuringInsert: false);
   final VerificationMeta _employeeSalaryMeta =
       const VerificationMeta('employeeSalary');
+  @override
   late final GeneratedColumn<int?> employeeSalary = GeneratedColumn<int?>(
       'employee_salary', aliasedName, true,
-      typeName: 'INTEGER', requiredDuringInsert: false);
+      type: const IntType(), requiredDuringInsert: false);
   final VerificationMeta _employeeJoiningDateMeta =
       const VerificationMeta('employeeJoiningDate');
+  @override
   late final GeneratedColumn<String?> employeeJoiningDate =
       GeneratedColumn<String?>('employee_joining_date', aliasedName, true,
-          typeName: 'TEXT', requiredDuringInsert: false);
+          type: const StringType(), requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns =>
       [employeeId, employeeName, employeeSalary, employeeJoiningDate];
@@ -271,7 +276,7 @@ class $EmployeeTableTable extends EmployeeTable
 
   @override
   $EmployeeTableTable createAlias(String alias) {
-    return $EmployeeTableTable(_db, alias);
+    return $EmployeeTableTable(attachedDatabase, alias);
   }
 }
 
