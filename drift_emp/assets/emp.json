@@ -1,0 +1,24 @@
+{
+  "emp": [
+    {
+      "id": 5,
+      "name": "abc",
+      "salary": 4000
+    },
+    {
+      "id": 6,
+      "name": "bbc",
+      "salary": 6000
+    },
+    {
+      "id": 7,
+      "name": "cbc",
+      "salary": 5000
+    },
+    {
+      "id": 8,
+      "name": "dbc",
+      "salary": 8000
+    }
+  ]
+}
