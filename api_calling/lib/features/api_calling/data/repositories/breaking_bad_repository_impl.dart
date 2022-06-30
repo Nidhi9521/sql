@@ -23,4 +23,33 @@ class BrakingBadRepositoryImpl extends BrakingBadRepository{
     return Right(res);
   }
 
+<<<<<<< HEAD
+=======
+  @override
+  Future<Either<Failure, List<QutoesModel>>> getBrakingBadDataModelAuthor(String author)async {
+   print('impl');
+   var res=await dataSource.getDataSourceDataModelAuthor(author);
+   return Right(res);
+  }
+
+  @override
+  Future<Either<Failure, QutoesModel>> getBrakingBadDataModelRandom() async{
+    print('impl');
+    var res=await dataSource.getDataSourceDataRandom();
+    return Right(res);
+  }
+
+  @override
+  Future<Either<Failure, List<QutoesModel>>> getBrakingBadDataModelSeries(String series) {
+    // TODO: implement getBrakingBadDataModelSeries
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, QutoesModel>> getBrakingBadDataModelRandomAuthor(String author) {
+    // TODO: implement getBrakingBadDataModelRandomAuthor
+    throw UnimplementedError();
+  }
+
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
 }

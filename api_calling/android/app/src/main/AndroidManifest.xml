@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.api_calling">
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
    <application
         android:label="api_calling"
         android:name="${applicationName}"

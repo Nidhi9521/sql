@@ -18,14 +18,23 @@ class HomePage extends StatelessWidget {
             if(state is serchActive){
               return Text('API Calling');
             }
+<<<<<<< HEAD
             return TextField(
+=======
+            return
+              TextField(
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
               controller: _name,
               decoration: InputDecoration(
                 labelText: 'Enter Author',
                 labelStyle:  TextStyle(color: Colors.white),
               ),style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
+<<<<<<< HEAD
               keyboardType: TextInputType.number,
+=======
+              // keyboardType: TextInputType.number,
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
             );
           },
         ),
@@ -43,8 +52,13 @@ class HomePage extends StatelessWidget {
                     print('close');
                     context.read<DataCubit>().serch(0);
                     if(_name.text.isNotEmpty) {
+<<<<<<< HEAD
                       context.read<DataCubit>().serchData(int.parse(_name
                           .text));
+=======
+                      context.read<DataCubit>().serchData(_name
+                          .text);
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
                       _name.clear();
                     }
                   }, icon: Icon(Icons.arrow_right_outlined)),
@@ -62,6 +76,7 @@ class HomePage extends StatelessWidget {
           if(state is GetDataPartSucc){
             return CardView(qutoesModel: state.modelQutoes);
           }
+<<<<<<< HEAD
           return Center(child: CircularProgressIndicator());
         },
       ),
@@ -72,6 +87,41 @@ class HomePage extends StatelessWidget {
         },
         child: Icon(Icons.add),
       ),
+=======
+
+          return Center(child: CircularProgressIndicator());
+        },
+
+      ),
+
+
+      floatingActionButton:Stack(
+        children: <Widget>[
+          Padding(padding: EdgeInsets.only(left:31),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child:FloatingActionButton(
+                onPressed: () {
+                  print('btn press');
+                  context.read<DataCubit>().getData();
+                },
+                child: Icon(Icons.add),
+              ),
+            ),),
+
+          Align(
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(
+              onPressed: (){
+                context.read<DataCubit>().randomData();
+              },
+              child: Icon(Icons.access_time_outlined),),
+          ),
+        ],
+      )
+
+
+>>>>>>> 1460823af274e00eb0664fe69483f12adc0d9740
     );
   }
 }
